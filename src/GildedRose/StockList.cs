@@ -1,10 +1,32 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace GildedRose
 {
     public class StockList : IStockList
     {
-        public void AddItem(string itemName, int sellIn, int quality)
+        private IEnumerable<IBuildItem> _buildItems;
+
+        public StockList()
         {
-            throw new System.NotImplementedException();
+        }
+
+        public StockList(IEnumerable<IBuildItem> buildItems)
+        {
+            _buildItems = buildItems;
+        }
+
+        public IItem AddItem(string itemName, int sellIn, int quality)
+        {
+            foreach(var factory in _buildItems)
+            {
+                if(factory.CanBuildItem(itemName))
+                {
+                    return factory.BuildItem(itemName, sellIn, quality);
+                }
+            }
+
+            return null;
         }
 
         public void AgeInventory()
