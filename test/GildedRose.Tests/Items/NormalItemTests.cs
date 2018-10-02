@@ -48,6 +48,24 @@ namespace GildedRose.Tests.Items
             exception.ParamName.Should().Be("quality");
             exception.Message.Should().StartWith("Cannot be negative");
         }
+
+        [Fact]
+        public void WhenICallAgeANormalItemIGetOutputWithTheExpectedValues()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = Random.Next(1, 1000);
+            var quality = Random.Next(1, 51);
+
+            IItem subject = new NormalItem(itemName, sellIn, quality);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn - 1} {quality - 1}");
+        }
     }
 
     public class NormalItem : IItem
@@ -68,6 +86,12 @@ namespace GildedRose.Tests.Items
             _quality = quality;
         }
 
+        public void AgeOneDay()
+        {
+            _sellIn--;
+            _quality--;
+        }
+
         public override string ToString()
         {
             return $"{_itemName} {_sellIn} {_quality}";
@@ -76,5 +100,6 @@ namespace GildedRose.Tests.Items
 
     public interface IItem
     {
+        void AgeOneDay();
     }
 }
