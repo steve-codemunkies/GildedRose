@@ -33,17 +33,4 @@ namespace GildedRose.Tests.Items
             result.Should().Be("NO SUCH ITEM");
         }
     }
-
-    public class NoSuchItem : IItem
-    {
-        public void AgeOneDay()
-        {
-            // Deliberately do nothing...
-        }
-
-        public override string ToString()
-        {
-            return "NO SUCH ITEM";
-        }
-    }
 }
