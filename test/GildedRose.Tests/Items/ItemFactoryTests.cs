@@ -48,6 +48,22 @@ namespace GildedRose.Tests.Items
             // Result
             result.Should().BeOfType<NormalItem>();
         }
+
+        [Fact]
+        public void WhenIBuildASulfurasItemIGetBackASulfurasItemObject()
+        {
+            // Arrange
+            var sellin = Random.Next(-1000, 1000);
+            var quality = Random.Next(0, 1000);
+
+            IItemFactory subject = new ItemFactory();
+
+            // Act
+            var result = subject.Build("Sulfuras", sellin, quality);
+
+            // Result
+            result.Should().BeOfType<SulfurasItem>();
+        }
     }
 
     public class ItemFactory : IItemFactory
@@ -60,6 +76,8 @@ namespace GildedRose.Tests.Items
                     return new AgedBrieItem(itemName, sellin, quality);    
                 case "NORMAL ITEM":
                     return new NormalItem(itemName, sellin, quality);
+                case "SULFURAS":
+                    return new SulfurasItem(itemName, sellin, quality);
             }
 
             return null;
