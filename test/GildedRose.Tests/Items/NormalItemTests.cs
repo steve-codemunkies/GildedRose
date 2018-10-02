@@ -119,6 +119,40 @@ namespace GildedRose.Tests.Items
             // Assert
             result.Should().Be($"{itemName} {sellIn - 1} 0");
         }
+
+        [Fact]
+        public void WhenICallAgeOnANormalItemPastItsSellInWithQuality0TheQualityIsNotDecrementedAndIGetOutputWithTheExpectedValues()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = Random.Next(-1000, 1);
+
+            IItem subject = new NormalItem(itemName, sellIn, 0);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn - 1} 0");
+        }
+
+        [Fact]
+        public void WhenICallAgeOnANormalItemPastItsSellInWithQuality1TheQualityIsSetToZeroAndIGetOutputWithTheExpectedValues()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = Random.Next(-1000, 1);
+
+            IItem subject = new NormalItem(itemName, sellIn, 1);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn - 1} 0");
+        }
     }
 
     public class NormalItem : IItem
@@ -143,20 +177,22 @@ namespace GildedRose.Tests.Items
         {
             _sellIn--;
 
-            if(_quality > 0)
+            if(_quality > 50)
             {
-                if(_quality > 50)
-                {
-                    _quality = 50;
-                }
-                else if(_sellIn<0)
-                {
-                    _quality-=2;
-                }
-                else
-                {
-                    _quality--;
-                }
+                _quality = 50;
+            }
+            else if(_sellIn<0)
+            {
+                _quality-=2;
+            }
+            else
+            {
+                _quality--;
+            }
+
+            if(_quality < 0)
+            {
+                _quality = 0;
             }
         }
 
