@@ -84,6 +84,41 @@ namespace GildedRose.Tests.Items
             // Assert
             result.Should().Be($"{itemName} {sellIn - 1} 50");
         }
+
+        [Fact]
+        public void WhenICallAgeOnANormalItemPastItsSellInQualityIsDecrementedBy2AndIGetOutputWithTheExpectedValues()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = Random.Next(-1000, 0);
+            var quality = Random.Next(1, 51);
+
+            IItem subject = new NormalItem(itemName, sellIn, quality);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn - 1} {quality - 2}");
+        }
+
+        [Fact]
+        public void WhenICallAgeOnANormalItemWithQuality0TheQualityIsNotDecrementedAndIGetOutputWithTheExpectedValues()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = Random.Next(1, 1000);
+
+            IItem subject = new NormalItem(itemName, sellIn, 0);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn - 1} 0");
+        }
     }
 
     public class NormalItem : IItem
@@ -108,13 +143,20 @@ namespace GildedRose.Tests.Items
         {
             _sellIn--;
 
-            if(_quality > 50)
+            if(_quality > 0)
             {
-                _quality = 50;
-            }
-            else
-            {
-                _quality--;
+                if(_quality > 50)
+                {
+                    _quality = 50;
+                }
+                else if(_sellIn<0)
+                {
+                    _quality-=2;
+                }
+                else
+                {
+                    _quality--;
+                }
             }
         }
 
