@@ -67,6 +67,41 @@ namespace GildedRose.Tests.Items
             // Assert
             result.Should().Be($"{itemName} {sellIn-1} {quality+1}");
         }
+
+        [Fact]
+        public void WhenIAgeAnAgedBrieItemWithQuality50TheQualityRemains50AndIGetOutputInTheExpectedFormat()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = AutoFixture.Create<int>();
+
+            IItem subject = new AgedBrieItem(itemName, sellIn, 50);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn-1} 50");
+        }
+
+        [Fact]
+        public void WhenIAgeAnAgedBrieItemWithQualityOver50TheQualityIsResetTo50AndIGetOutputInTheExpectedFormat()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = AutoFixture.Create<int>();
+            var quality = Random.Next(51, 1000);
+
+            IItem subject = new AgedBrieItem(itemName, sellIn, quality);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn-1} 50");
+        }
     }
 
     public class AgedBrieItem : BaseItem
@@ -79,6 +114,11 @@ namespace GildedRose.Tests.Items
         {
             _sellIn--;
             _quality++;
+
+            if(_quality>50)
+            {
+                _quality = 50;
+            }
         }
     }
 }
