@@ -67,6 +67,24 @@ namespace GildedRose.Tests.Items
             // Assert
             result.Should().Be($"{itemName} {sellIn-1} {quality+1}");
         }
+
+        [Fact]
+        public void WhenAgeABackstagePassWithMoreThan10DaysSellinAndQualityGreaterThan50TheQualityIsResetTo50()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = Random.Next(12, 1000);
+            var quality = Random.Next(51, 1000);
+
+            IItem subject = new BackstagePassItem(itemName, sellIn, quality);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn-1} 50");
+        }
     }
 
     public class BackstagePassItem : BaseItem
@@ -79,6 +97,11 @@ namespace GildedRose.Tests.Items
         {
             _sellIn--;
             _quality++;
+
+            if(_quality > QualityCeilingInclusive)
+            {
+                _quality = QualityCeilingInclusive;
+            }
         }
     }
 }
