@@ -66,6 +66,24 @@ namespace GildedRose.Tests.Items
             // Assert
             result.Should().Be($"{itemName} {sellIn} 50");
         }
+
+        [Fact]
+        public void WhenIAgeASulfurasItemTheSellInAndQualityStayTheSameIGetOutputInTheExpectedFormat()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = AutoFixture.Create<int>();
+            var quality = Random.Next(0, 51);
+
+            IItem subject = new SulfurasItem(itemName, sellIn, quality);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn} {quality}");
+        }
     }
 
     public class SulfurasItem : BaseItem
@@ -80,7 +98,7 @@ namespace GildedRose.Tests.Items
 
         public override void AgeOneDay()
         {
-            throw new NotImplementedException();
+            // Deliberately doing nothing
         }
     }
 }
