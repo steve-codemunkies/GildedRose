@@ -137,6 +137,59 @@ namespace GildedRose.Tests.Items
             // Assert
             result.Should().Be($"{itemName} {sellIn-1} 50");
         }
+
+        [Fact]
+        public void WhenAgeABackstagePassWithBetween0And5DaysSellinIncTheQualityIncreasesBy3()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = Random.Next(1, 6);
+            var quality = Random.Next(0, 48);
+
+            IItem subject = new BackstagePassItem(itemName, sellIn, quality);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn-1} {quality+3}");
+        }
+
+        [Fact]
+        public void WhenAgeABackstagePassWithBetween0And5DaysSellinIncAndQualityWas48Or49TheQualityIsSetTo50()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = Random.Next(1, 6);
+            var quality = Random.Next(48, 50);
+
+            IItem subject = new BackstagePassItem(itemName, sellIn, quality);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn-1} 50");
+        }
+        [Fact]
+        public void WhenAgeABackstagePassWithBetween0And5DaysSellinIncAndQualityOver50TheQualityIsSetTo50()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = Random.Next(1, 6);
+            var quality = Random.Next(51, 1000);
+
+            IItem subject = new BackstagePassItem(itemName, sellIn, quality);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn-1} 50");
+        }
     }
 
     public class BackstagePassItem : BaseItem
@@ -156,6 +209,10 @@ namespace GildedRose.Tests.Items
             else if(_sellIn > 5 && _sellIn <= 10)
             {
                 _quality+=2;
+            }
+            else if (_sellIn >= 0 && _sellIn <= 5)
+            {
+                _quality+=3;
             }
 
             if(_quality > QualityCeilingInclusive)
