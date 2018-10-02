@@ -49,6 +49,24 @@ namespace GildedRose.Tests.Items
             exception.ParamName.Should().Be("quality");
             exception.Message.Should().StartWith("Cannot be negative");
         }
+
+        [Fact]
+        public void WhenIAgeAnAgedBrieItemTheQualityIncreasesAndIGetOutputInTheExpectedFormat()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = AutoFixture.Create<int>();
+            var quality = Random.Next(0, 50);
+
+            IItem subject = new AgedBrieItem(itemName, sellIn, quality);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn-1} {quality+1}");
+        }
     }
 
     public class AgedBrieItem : BaseItem
@@ -59,7 +77,8 @@ namespace GildedRose.Tests.Items
 
         public override void AgeOneDay()
         {
-            throw new NotImplementedException();
+            _sellIn--;
+            _quality++;
         }
     }
 }
