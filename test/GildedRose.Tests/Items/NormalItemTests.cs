@@ -32,6 +32,22 @@ namespace GildedRose.Tests.Items
             // Assert
             result.Should().Be($"{itemName} {sellIn} {quality}");
         }
+
+        [Fact]
+        public void WhenITryToCreateANormalItemWithANegativeQualityItShouldThrowAnArgumentException()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = AutoFixture.Create<int>();
+            var quality = Random.Next(-1000, 0);
+
+            // Act
+            var exception = Assert.Throws<ArgumentException>(() => new NormalItem(itemName, sellIn, quality));
+
+            // Assert
+            exception.ParamName.Should().Be("quality");
+            exception.Message.Should().StartWith("Cannot be negative");
+        }
     }
 
     public class NormalItem : IItem
@@ -42,6 +58,11 @@ namespace GildedRose.Tests.Items
 
         public NormalItem(string itemName, int sellIn, int quality)
         {
+            if(quality < 0)
+            {
+                throw new ArgumentException("Cannot be negative", nameof(quality));
+            }
+
             _itemName = itemName;
             _sellIn = sellIn;
             _quality = quality;
