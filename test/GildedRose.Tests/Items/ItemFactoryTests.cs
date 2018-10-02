@@ -64,6 +64,51 @@ namespace GildedRose.Tests.Items
             // Result
             result.Should().BeOfType<SulfurasItem>();
         }
+
+        [Fact]
+        public void WhenIBuildABackstagePassItemIGetBackABackstagePassItemObject()
+        {
+            // Arrange
+            var sellin = Random.Next(-1000, 1000);
+            var quality = Random.Next(0, 1000);
+
+            IItemFactory subject = new ItemFactory();
+
+            // Act
+            var result = subject.Build("Backstage passes", sellin, quality);
+
+            // Result
+            result.Should().BeOfType<BackstagePassItem>();
+        }
+
+        [Fact]
+        public void WhenIBuildAConjuredItemIGetBackAConjuredItemObject()
+        {
+            // Arrange
+            var sellin = Random.Next(-1000, 1000);
+            var quality = Random.Next(0, 1000);
+
+            IItemFactory subject = new ItemFactory();
+
+            // Act
+            var result = subject.Build("Conjured", sellin, quality);
+
+            // Result
+            result.Should().BeOfType<ConjuredItem>();
+        }
+
+        [Fact]
+        public void WhenITryAndBuildAnUnknownItemIGetBackANoSuchItemObject()
+        {
+            // Arrange
+            IItemFactory subject = new ItemFactory();
+
+            // Act
+            var result = subject.Build(AutoFixture.Create<string>(), AutoFixture.Create<int>(), AutoFixture.Create<int>());
+
+            // Result
+            result.Should().BeOfType<NoSuchItem>();
+        }
     }
 
     public class ItemFactory : IItemFactory
@@ -78,9 +123,13 @@ namespace GildedRose.Tests.Items
                     return new NormalItem(itemName, sellin, quality);
                 case "SULFURAS":
                     return new SulfurasItem(itemName, sellin, quality);
+                case "BACKSTAGE PASSES":
+                    return new BackstagePassItem(itemName, sellin, quality);
+                case "CONJURED":
+                    return new ConjuredItem(itemName, sellin, quality);
+                default:
+                    return new NoSuchItem();
             }
-
-            return null;
         }
     }
 
