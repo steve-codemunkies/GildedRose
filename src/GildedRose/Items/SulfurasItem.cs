@@ -4,9 +4,9 @@ namespace GildedRose.Items
     {
         public SulfurasItem(string itemName, int sellIn, int quality) : base(itemName, sellIn, quality)
         {
-            if(_quality>50)
+            if(_quality > QualityCeilingInclusive)
             {
-                _quality = 50;
+                _quality = QualityCeilingInclusive;
             }
         }
 

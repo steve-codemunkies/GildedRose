@@ -11,9 +11,9 @@ namespace GildedRose.Items
             _sellIn--;
             _quality++;
 
-            if(_quality>50)
+            if(_quality > QualityCeilingInclusive)
             {
-                _quality = 50;
+                _quality = QualityCeilingInclusive;
             }
         }
     }

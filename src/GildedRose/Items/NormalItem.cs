@@ -11,9 +11,9 @@ namespace GildedRose.Items
         {
             _sellIn--;
 
-            if(_quality > 50)
+            if(_quality > QualityCeilingInclusive)
             {
-                _quality = 50;
+                _quality = QualityCeilingInclusive;
             }
             else if(_sellIn<0)
             {
@@ -24,9 +24,9 @@ namespace GildedRose.Items
                 _quality--;
             }
 
-            if(_quality < 0)
+            if(_quality < QualityFloorInclusive)
             {
-                _quality = 0;
+                _quality = QualityFloorInclusive;
             }
         }
     }
