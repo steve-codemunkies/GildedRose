@@ -18,7 +18,7 @@ namespace GildedRose.Tests.Items
         public Random Random { get; }
 
         [Fact]
-        public void WhenICallToStringOnAnAfedBrieItemIGetOutputInTheExpectedFormat()
+        public void WhenICallToStringOnAnAgedBrieItemIGetOutputInTheExpectedFormat()
         {
             // Arrange
             var itemName = AutoFixture.Create<string>();
@@ -32,6 +32,22 @@ namespace GildedRose.Tests.Items
 
             // Assert
             result.Should().Be($"{itemName} {sellIn} {quality}");
+        }
+
+        [Fact]
+        public void WhenITryToCreateAnAgedBrieItemWithANegativeQualityItShouldThrowAnArgumentException()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = AutoFixture.Create<int>();
+            var quality = Random.Next(-1000, 0);
+
+            // Act
+            var exception = Assert.Throws<ArgumentException>(() => new AgedBrieItem(itemName, sellIn, quality));
+
+            // Assert
+            exception.ParamName.Should().Be("quality");
+            exception.Message.Should().StartWith("Cannot be negative");
         }
     }
 
