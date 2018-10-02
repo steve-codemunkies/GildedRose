@@ -2,13 +2,13 @@ using System;
 
 namespace GildedRose.Items
 {
-    public class NormalItem : IItem
+    public abstract class BaseItem : IItem
     {
-        private string _itemName;
-        private int _sellIn;
-        private int _quality;
+        protected string _itemName;
+        protected int _sellIn;
+        protected int _quality;
 
-        public NormalItem(string itemName, int sellIn, int quality)
+        public BaseItem(string itemName, int sellIn, int quality)
         {
             if(quality < 0)
             {
@@ -20,7 +20,21 @@ namespace GildedRose.Items
             _quality = quality;
         }
 
-        public void AgeOneDay()
+        public abstract void AgeOneDay();
+
+        public override string ToString()
+        {
+            return $"{_itemName} {_sellIn} {_quality}";
+        }
+    }
+
+    public class NormalItem : BaseItem
+    {
+        public NormalItem(string itemName, int sellIn, int quality) : base(itemName, sellIn, quality)
+        {
+        }
+
+        public override void AgeOneDay()
         {
             _sellIn--;
 
@@ -41,11 +55,6 @@ namespace GildedRose.Items
             {
                 _quality = 0;
             }
-        }
-
-        public override string ToString()
-        {
-            return $"{_itemName} {_sellIn} {_quality}";
         }
     }
 }
