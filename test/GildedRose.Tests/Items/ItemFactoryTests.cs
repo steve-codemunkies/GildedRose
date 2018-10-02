@@ -32,13 +32,37 @@ namespace GildedRose.Tests.Items
             // Result
             result.Should().BeOfType<AgedBrieItem>();
         }
+
+        [Fact]
+        public void WhenIBuildAnNormalItemIGetBackANormalItemObject()
+        {
+            // Arrange
+            var sellin = Random.Next(-1000, 1000);
+            var quality = Random.Next(0, 1000);
+
+            IItemFactory subject = new ItemFactory();
+
+            // Act
+            var result = subject.Build("Normal Item", sellin, quality);
+
+            // Result
+            result.Should().BeOfType<NormalItem>();
+        }
     }
 
     public class ItemFactory : IItemFactory
     {
         public IItem Build(string itemName, int sellin, int quality)
         {
-            return new AgedBrieItem(itemName, sellin, quality);
+            switch (itemName.ToUpperInvariant())
+            {
+                case "AGED BRIE":
+                    return new AgedBrieItem(itemName, sellin, quality);    
+                case "NORMAL ITEM":
+                    return new NormalItem(itemName, sellin, quality);
+            }
+
+            return null;
         }
     }
 
