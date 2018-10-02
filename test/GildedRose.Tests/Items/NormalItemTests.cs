@@ -66,6 +66,24 @@ namespace GildedRose.Tests.Items
             // Assert
             result.Should().Be($"{itemName} {sellIn - 1} {quality - 1}");
         }
+
+        [Fact]
+        public void WhenICallAgeOnANormalItemWithQualityGreaterThan50TheQualityIsSetTo50AndIGetOutputWithTheExpectedValues()
+        {
+            // Arrange
+            var itemName = AutoFixture.Create<string>();
+            var sellIn = Random.Next(1, 1000);
+            var quality = Random.Next(51, 1000);
+
+            IItem subject = new NormalItem(itemName, sellIn, quality);
+
+            // Act
+            subject.AgeOneDay();
+            var result = subject.ToString();
+
+            // Assert
+            result.Should().Be($"{itemName} {sellIn - 1} 50");
+        }
     }
 
     public class NormalItem : IItem
@@ -89,7 +107,15 @@ namespace GildedRose.Tests.Items
         public void AgeOneDay()
         {
             _sellIn--;
-            _quality--;
+
+            if(_quality > 50)
+            {
+                _quality = 50;
+            }
+            else
+            {
+                _quality--;
+            }
         }
 
         public override string ToString()
