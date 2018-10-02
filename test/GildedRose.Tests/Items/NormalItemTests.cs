@@ -92,7 +92,7 @@ namespace GildedRose.Tests.Items
             // Arrange
             var itemName = AutoFixture.Create<string>();
             var sellIn = Random.Next(-1000, 0);
-            var quality = Random.Next(1, 51);
+            var quality = Random.Next(2, 51);
 
             IItem subject = new NormalItem(itemName, sellIn, quality);
 
