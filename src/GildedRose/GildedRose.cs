@@ -57,12 +57,9 @@ public class GildedRose
 
             if (item.SellIn < 0)
             {
-                if (isAgedBrie)
+                if (isAgedBrie && item.Quality < 50)
                 {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality++;
-                    }
+                    item.Quality++;
                 }
                 else
                 {
