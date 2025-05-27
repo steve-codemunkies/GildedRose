@@ -32,6 +32,19 @@ public class ApprovalTest
     }
 
     [Fact]
+    public Task NegativeNumber()
+    {
+        var fakeOutput = new StringBuilder();
+        Console.SetOut(new StringWriter(fakeOutput));
+        Console.SetIn(new StringReader("a\n"));
+
+        Program.Main(["-2000"]);
+        var output = fakeOutput.ToString();
+
+        return Verifier.Verify(output);
+    }
+
+    [Fact]
     public Task TenDays()
     {
         var fakeOutput = new StringBuilder();
