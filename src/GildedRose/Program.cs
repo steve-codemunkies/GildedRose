@@ -56,7 +56,7 @@ public class Program
 
             foreach (Item item in Items)
             {
-                System.Console.WriteLine(item.Name + ", " + item.SellIn + ", " + item.Quality);
+                Console.WriteLine(item.Name + ", " + item.SellIn + ", " + item.Quality);
             }
 
             Console.WriteLine("");
