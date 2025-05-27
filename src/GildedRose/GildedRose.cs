@@ -25,25 +25,6 @@ public class GildedRose
                 if (item.Quality < 50)
                 {
                     item.Quality++;
-
-                    if (isBackstagePass)
-                    {
-                        if (item.SellIn < 11)
-                        {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality++;
-                            }
-                        }
-
-                        if (item.SellIn < 6)
-                        {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality++;
-                            }
-                        }
-                    }
                 }
             }
             else if (isBackstagePass)
