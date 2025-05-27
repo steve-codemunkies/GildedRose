@@ -9,6 +9,7 @@ public class GildedRose
     }
 
     private const int MinimumItemQuality = 0;
+    private const int MaximumItemQuality = 50;
 
     public void UpdateQuality()
     {
@@ -26,7 +27,7 @@ public class GildedRose
             }
             else
             {
-                if (item.Quality < 50)
+                if (item.Quality < MaximumItemQuality)
                 {
                     item.Quality = item.Quality + 1;
 
@@ -34,7 +35,7 @@ public class GildedRose
                     {
                         if (item.SellIn < 11)
                         {
-                            if (item.Quality < 50)
+                            if (item.Quality < MaximumItemQuality)
                             {
                                 item.Quality = item.Quality + 1;
                             }
@@ -42,7 +43,7 @@ public class GildedRose
 
                         if (item.SellIn < 6)
                         {
-                            if (item.Quality < 50)
+                            if (item.Quality < MaximumItemQuality)
                             {
                                 item.Quality = item.Quality + 1;
                             }
@@ -77,7 +78,7 @@ public class GildedRose
                 }
                 else
                 {
-                    if (item.Quality < 50)
+                    if (item.Quality < MaximumItemQuality)
                     {
                         item.Quality = item.Quality + 1;
                     }
