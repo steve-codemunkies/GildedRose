@@ -20,12 +20,10 @@ public class GildedRose
             bool isAgedBrie = item.Name == "Aged Brie";
             bool isBackstagePass = item.Name == "Backstage passes to a TAFKAL80ETC concert";
 
-            if (isAgedBrie)
+            if (isAgedBrie && item.Quality < 50)
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality++;
-                }
+                item.Quality++;
+
             }
             else if (isBackstagePass)
             {
