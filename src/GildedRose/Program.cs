@@ -40,7 +40,11 @@ public class Program
 
         var app = new GildedRose(Items);
 
-        var days = args.Length == 0 ? 1 : int.Parse(args[0]);
+        var days = 1;
+        if (args.Length > 0 && int.TryParse(args[0], out var parsedValue))
+        {
+            days = parsedValue;
+        }
 
         for (var i = 0; i <= days; i++)
         {
