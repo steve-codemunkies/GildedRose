@@ -18,7 +18,7 @@ public class GildedRose
                 {
                     if (item.Name != "Sulfuras, Hand of Ragnaros")
                     {
-                        item.Quality = item.Quality - 1;
+                        item.Quality--;
                     }
                 }
             }
@@ -26,7 +26,7 @@ public class GildedRose
             {
                 if (item.Quality < 50)
                 {
-                    item.Quality = item.Quality + 1;
+                    item.Quality++;
 
                     if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                     {
@@ -34,7 +34,7 @@ public class GildedRose
                         {
                             if (item.Quality < 50)
                             {
-                                item.Quality = item.Quality + 1;
+                                item.Quality++;
                             }
                         }
 
@@ -42,7 +42,7 @@ public class GildedRose
                         {
                             if (item.Quality < 50)
                             {
-                                item.Quality = item.Quality + 1;
+                                item.Quality++;
                             }
                         }
                     }
@@ -51,7 +51,7 @@ public class GildedRose
 
             if (item.Name != "Sulfuras, Hand of Ragnaros")
             {
-                item.SellIn = item.SellIn - 1;
+                item.SellIn--;
             }
 
             if (item.SellIn < 0)
@@ -64,7 +64,7 @@ public class GildedRose
                         {
                             if (item.Name != "Sulfuras, Hand of Ragnaros")
                             {
-                                item.Quality = item.Quality - 1;
+                                item.Quality--;
                             }
                         }
                     }
@@ -77,7 +77,7 @@ public class GildedRose
                 {
                     if (item.Quality < 50)
                     {
-                        item.Quality = item.Quality + 1;
+                        item.Quality++;
                     }
                 }
             }
