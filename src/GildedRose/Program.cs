@@ -40,7 +40,9 @@ public class Program
 
         var app = new GildedRose(Items);
 
-        for (var i = 0; i < 31; i++)
+        var days = args.Length == 0 ? 1 : 30;
+
+        for (var i = 0; i <= days; i++)
         {
             Console.WriteLine("-------- day " + i + " --------");
             Console.WriteLine("name, sellIn, quality");
