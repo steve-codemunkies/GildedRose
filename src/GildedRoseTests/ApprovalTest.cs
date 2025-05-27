@@ -19,6 +19,19 @@ public class ApprovalTest
     }
 
     [Fact]
+    public Task NotANumber()
+    {
+        var fakeOutput = new StringBuilder();
+        Console.SetOut(new StringWriter(fakeOutput));
+        Console.SetIn(new StringReader("a\n"));
+
+        Program.Main(["This is not a number"]);
+        var output = fakeOutput.ToString();
+
+        return Verifier.Verify(output);
+    }
+
+    [Fact]
     public Task TenDays()
     {
         var fakeOutput = new StringBuilder();
