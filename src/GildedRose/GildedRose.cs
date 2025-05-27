@@ -64,16 +64,16 @@ public class GildedRose
                 }
                 else
                 {
-                    if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
+                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                    {
+                        item.Quality = 0;
+                    }
+                    else
                     {
                         if (item.Quality > 0)
                         {
                             item.Quality--;
                         }
-                    }
-                    else
-                    {
-                        item.Quality = 0;
                     }
                 }
             }
