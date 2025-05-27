@@ -2,6 +2,9 @@
 
 public class Program
 {
+    private const int DefaultDays = 1;
+    private const int ExclusiveMinimumDays = 0;
+
     public static void Main(string[] args)
     {
         Console.WriteLine("OMGHAI!");
@@ -40,8 +43,8 @@ public class Program
 
         var app = new GildedRose(Items);
 
-        var days = 1;
-        if (args.Length > 0 && int.TryParse(args[0], out var parsedValue) && parsedValue > 0)
+        var days = DefaultDays;
+        if (args.Length > 0 && int.TryParse(args[0], out var parsedValue) && parsedValue > ExclusiveMinimumDays)
         {
             days = parsedValue;
         }
