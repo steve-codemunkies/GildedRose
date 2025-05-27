@@ -8,13 +8,15 @@ public class GildedRose
         this.Items = Items;
     }
 
+    private const int MinimumItemQuality = 0;
+
     public void UpdateQuality()
     {
         foreach (Item item in Items)
         {
             if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
             {
-                if (item.Quality > 0)
+                if (item.Quality > MinimumItemQuality)
                 {
                     if (item.Name != "Sulfuras, Hand of Ragnaros")
                     {
@@ -60,7 +62,7 @@ public class GildedRose
                 {
                     if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
                     {
-                        if (item.Quality > 0)
+                        if (item.Quality > MinimumItemQuality)
                         {
                             if (item.Name != "Sulfuras, Hand of Ragnaros")
                             {
