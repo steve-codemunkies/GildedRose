@@ -397,3 +397,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 .idea
+
+# Ignore Verify received files so that broken approval tests can be committed
+*.received.txt
