@@ -48,12 +48,9 @@ public class GildedRose
                     }
                 }
             }
-            else
+            else if (item.Quality > 0)
             {
-                if (item.Quality > 0)
-                {
-                    item.Quality--;
-                }
+                item.Quality--;
             }
 
             item.SellIn--;
