@@ -62,10 +62,11 @@ public class GildedRose
                     {
                         if (item.Quality > 0)
                         {
-                            if (item.Name != "Sulfuras, Hand of Ragnaros")
+                            if (item.Name == "Sulfuras, Hand of Ragnaros")
                             {
-                                item.Quality--;
+                                continue;
                             }
+                            item.Quality--;
                         }
                     }
                     else
