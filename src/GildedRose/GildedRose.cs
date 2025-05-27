@@ -30,10 +30,7 @@ public class GildedRose
                 {
                     if (item.SellIn < 11)
                     {
-                        if (item.Quality < MaximumItemQuality)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
+                        item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
                     }
 
                     if (item.SellIn < 6)
