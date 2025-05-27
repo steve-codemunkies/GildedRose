@@ -49,7 +49,11 @@ public class GildedRose
                 }
             }
 
-            if (item.Name != "Sulfuras, Hand of Ragnaros")
+            if (item.Name == "Sulfuras, Hand of Ragnaros")
+            {
+                // Do nothing
+            }
+            else
             {
                 item.SellIn--;
             }
