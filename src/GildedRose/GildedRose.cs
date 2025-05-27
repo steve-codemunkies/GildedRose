@@ -18,14 +18,15 @@ public class GildedRose
             }
 
             bool isAgedBrie = item.Name == "Aged Brie";
+            bool isBackstagePass = item.Name == "Backstage passes to a TAFKAL80ETC concert";
 
-            if (isAgedBrie || item.Name == "Backstage passes to a TAFKAL80ETC concert")
+            if (isAgedBrie || isBackstagePass)
             {
                 if (item.Quality < 50)
                 {
                     item.Quality++;
 
-                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                    if (isBackstagePass)
                     {
                         if (item.SellIn < 11)
                         {
@@ -66,7 +67,7 @@ public class GildedRose
                 }
                 else
                 {
-                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                    if (isBackstagePass)
                     {
                         item.Quality = 0;
                     }
