@@ -16,28 +16,9 @@ public class Program
             new Item { Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7 },
             ItemFactory.LegendaryItem("Sulfuras, Hand of Ragnaros", 80, 0),
             ItemFactory.LegendaryItem("Sulfuras, Hand of Ragnaros", 80, -1),
-            new Item
-            {
-                Name = "Backstage passes to a TAFKAL80ETC concert",
-                SellIn = 15,
-                Quality = 20
-            },
-
-            new Item
-            {
-                Name = "Backstage passes to a TAFKAL80ETC concert",
-                SellIn = 10,
-                Quality = 49
-            },
-
-            new Item
-            {
-                Name = "Backstage passes to a TAFKAL80ETC concert",
-                SellIn = 5,
-                Quality = 49
-            },
-            // this conjured item does not work properly yet
-
+            ItemFactory.BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 20, 15),
+            ItemFactory.BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 49, 10),
+            ItemFactory.BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 49, 5),
             new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 }
         ];
 

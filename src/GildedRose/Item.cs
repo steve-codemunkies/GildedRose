@@ -12,7 +12,6 @@ public class Item
     public enum ItemType
     {
         NormalItem,
-        BackstagePasses,
         ConjuredItem
     }
 
@@ -24,16 +23,6 @@ public class Item
 
         switch (itemType)
         {
-            case ItemType.BackstagePasses:
-                Quality = SellIn switch
-                {
-                    < 0 => MinimumItemQuality,
-                    < 6 => Math.Min(Quality + 3, MaximumItemQuality),
-                    < 11 => Math.Min(Quality + 2, MaximumItemQuality),
-                    _ => Math.Min(Quality + 1, MaximumItemQuality),
-                };
-                break;
-
             case ItemType.ConjuredItem:
                 var decrement = SellIn < 0 ? 4 : 2;
 
@@ -55,7 +44,6 @@ public class Item
     {
         return Name switch
         {
-            "Backstage passes to a TAFKAL80ETC concert" => ItemType.BackstagePasses,
             "Conjured Mana Cake" => ItemType.ConjuredItem,
             _ => ItemType.NormalItem
         };
