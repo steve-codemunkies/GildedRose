@@ -15,14 +15,7 @@ public class GildedRose
     {
         foreach (Item item in Items)
         {
-            if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
-            {
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
-                }
-            }
-            else
+            if (item.Name == "Aged Brie" || item.Name == "Backstage passes to a TAFKAL80ETC concert")
             {
                 item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
 
@@ -37,6 +30,13 @@ public class GildedRose
                     {
                         item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
                     }
+                }
+            }
+            else
+            {
+                if (item.Name != "Sulfuras, Hand of Ragnaros")
+                {
+                    item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
                 }
             }
 
