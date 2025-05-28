@@ -11,9 +11,9 @@ public class Program
 
         List<Item> Items =
         [
-            new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20 },
+            ItemFactory.NormalItem("+5 Dexterity Vest", 20, 10),
             ItemFactory.QualityIncrementItem("Aged Brie", 0, 2),
-            new Item { Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7 },
+            ItemFactory.NormalItem("Elixir of the Mongoose", 7, 5),
             ItemFactory.LegendaryItem("Sulfuras, Hand of Ragnaros", 80, 0),
             ItemFactory.LegendaryItem("Sulfuras, Hand of Ragnaros", 80, -1),
             ItemFactory.BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 20, 15),
