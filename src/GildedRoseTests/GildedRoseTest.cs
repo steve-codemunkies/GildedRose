@@ -4,12 +4,20 @@ namespace GildedRoseTests;
 
 public class GildedRoseTest
 {
+    private static readonly Random _random = new Random();
+
     [Fact]
-    public void Foo()
+    public void SulfurasIsALegendaryItemAndNeverChanges()
     {
-        List<Item> items = [ new Item { Name = "foo", SellIn = 0, Quality = 0 } ];
-        GildedRose app = new(items);
+        var expectedSellIn = _random.Next(1, 100);
+        var expectedQuality = _random.Next(1, 100);
+
+        var item = new Item { Name = "Sulfuras, Hand of Ragnaros", Quality = expectedQuality, SellIn = expectedSellIn };
+
+        var app = new GildedRose([item]);
         app.UpdateQuality();
-        Assert.Equal("foo", items[0].Name);
+
+        Assert.Equal(expectedQuality, item.Quality);
+        Assert.Equal(expectedSellIn, item.SellIn);
     }
 }
