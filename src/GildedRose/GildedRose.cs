@@ -51,12 +51,9 @@ public class GildedRose
             }
             else
             {
-                item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
+                var decrement = item.SellIn < 0 ? 2 : 1;
 
-                if (item.SellIn < 0)
-                {
-                    item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
-                }
+                item.Quality = Math.Max(item.Quality - decrement, MinimumItemQuality);
             }
         }
     }
