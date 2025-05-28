@@ -20,8 +20,8 @@ public class ItemFactory
         return new BackstagePassItem { Name = name, Quality = quality, SellIn = sellIn };
     }
 
-    public static ConjuredItem ConjuredItem(string expectedName, int expectedQuality, int expectedSellIn)
+    public static ConjuredItem ConjuredItem(string name, int quality, int sellIn)
     {
-        throw new NotImplementedException();
+        return new ConjuredItem { Name = name, Quality = quality, SellIn = sellIn };
     }
 }
