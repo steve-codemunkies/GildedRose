@@ -48,5 +48,20 @@ namespace GildedRoseTests
             Assert.Equal(expectedQuality, item.Quality);
             Assert.Equal(expectedSellIn, item.SellIn);
         }
+
+        [Fact]
+        public void TheItemFactoryConjuredItemMethodBuildsAConjuredItem()
+        {
+            var expectedName = "Conjured Mana Cake";
+            var expectedSellIn = 25;
+            var expectedQuality = 25;
+
+            var item = ItemFactory.ConjuredItem(expectedName, expectedQuality, expectedSellIn);
+
+            Assert.IsType<ConjuredItem>(item);
+            Assert.Equal(expectedName, item.Name);
+            Assert.Equal(expectedQuality, item.Quality);
+            Assert.Equal(expectedSellIn, item.SellIn);
+        }
     }
 }
