@@ -1,13 +1,7 @@
 ﻿namespace GildedRoseKata;
 
-public class GildedRose
+public class GildedRose(IList<Item> Items)
 {
-    IList<Item> Items;
-    public GildedRose(IList<Item> Items)
-    {
-        this.Items = Items;
-    }
-
     private const int MinimumItemQuality = 0;
     private const int MaximumItemQuality = 50;
     private const int SulfurasItemQuality = 80;
