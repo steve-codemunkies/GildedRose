@@ -45,17 +45,24 @@ public class GildedRose
                 item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
             }
 
-            if (item.SellIn < 0)
+            
+            if (item.Name == "Aged Brie")
             {
-                if (item.Name == "Aged Brie")
+                if (item.SellIn < 0)
                 {
                     item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
                 }
-                else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+            }
+            else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+            {
+                if (item.SellIn < 0)
                 {
                     item.Quality = MinimumItemQuality;
                 }
-                else
+            }
+            else
+            {
+                if (item.SellIn < 0)
                 {
                     item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
                 }
