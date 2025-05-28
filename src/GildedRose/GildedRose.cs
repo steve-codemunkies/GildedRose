@@ -33,13 +33,11 @@ public class GildedRose
                     item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
                 }
             }
-            else
+            else if (item.Name != "Sulfuras, Hand of Ragnaros")
             {
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
-                }
+                item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
             }
+
 
             if (item.Name != "Sulfuras, Hand of Ragnaros")
             {
