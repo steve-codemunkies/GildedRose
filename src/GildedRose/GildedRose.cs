@@ -43,6 +43,11 @@ public class GildedRose
             else
             {
                 item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
+
+                if (item.SellIn < 0)
+                {
+                    item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
+                }
             }
 
             
@@ -58,13 +63,6 @@ public class GildedRose
                 if (item.SellIn < 0)
                 {
                     item.Quality = MinimumItemQuality;
-                }
-            }
-            else
-            {
-                if (item.SellIn < 0)
-                {
-                    item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
                 }
             }
         }
