@@ -63,5 +63,20 @@ namespace GildedRoseTests
             Assert.Equal(expectedQuality, item.Quality);
             Assert.Equal(expectedSellIn, item.SellIn);
         }
+
+        [Fact]
+        public void TheItemFactoryNormalItemMethodBuildsAnItem()
+        {
+            var expectedName = "Normal Item";
+            var expectedSellIn = 25;
+            var expectedQuality = 25;
+
+            var item = ItemFactory.NormalItem(expectedName, expectedQuality, expectedSellIn);
+
+            Assert.IsType<Item>(item);
+            Assert.Equal(expectedName, item.Name);
+            Assert.Equal(expectedQuality, item.Quality);
+            Assert.Equal(expectedSellIn, item.SellIn);
+        }
     }
 }

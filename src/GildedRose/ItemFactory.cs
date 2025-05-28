@@ -24,4 +24,9 @@ public class ItemFactory
     {
         return new ConjuredItem { Name = name, Quality = quality, SellIn = sellIn };
     }
+
+    public static Item NormalItem(string name, int quality, int sellIn)
+    {
+        throw new NotImplementedException();
+    }
 }
