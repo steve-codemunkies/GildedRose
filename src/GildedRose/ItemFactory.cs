@@ -27,6 +27,6 @@ public class ItemFactory
 
     public static Item NormalItem(string name, int quality, int sellIn)
     {
-        throw new NotImplementedException();
+        return new Item { Name = name, Quality = quality, SellIn = sellIn };
     }
 }
