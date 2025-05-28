@@ -1,4 +1,5 @@
-﻿namespace GildedRoseKata;
+﻿
+namespace GildedRoseKata;
 
 public class ItemFactory
 {
@@ -10,5 +11,10 @@ public class ItemFactory
     public static QualityIncrementItem QualityIncrementItem(string name, int quality, int sellIn)
     {
         return new QualityIncrementItem { Name = name, Quality = quality, SellIn = sellIn };
+    }
+
+    public static BackstagePassItem BackstagePassItem(string expectedName, int expectedQuality, int expectedSellIn)
+    {
+        throw new NotImplementedException();
     }
 }
