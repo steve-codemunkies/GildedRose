@@ -9,6 +9,6 @@ public class ItemFactory
 
     public static QualityIncrementItem QualityIncrementItem(string name, int quality, int sellIn)
     {
-        throw new NotImplementedException();
+        return new QualityIncrementItem { Name = name, Quality = quality, SellIn = sellIn };
     }
 }
