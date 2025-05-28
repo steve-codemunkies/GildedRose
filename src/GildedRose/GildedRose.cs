@@ -20,6 +20,8 @@ public class GildedRose
                 continue;
             }
             
+            item.SellIn = item.SellIn - 1;
+
             if (item.Name == "Aged Brie")
             {
                 item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
@@ -32,8 +34,6 @@ public class GildedRose
             {
                 item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
             }
-
-            item.SellIn = item.SellIn - 1;
 
             if (item.SellIn < 0)
             {
