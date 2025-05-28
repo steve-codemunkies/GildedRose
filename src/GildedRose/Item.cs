@@ -7,46 +7,13 @@ public class Item
     public int Quality { get; set; }
 
     private const int MinimumItemQuality = 0;
-    private const int MaximumItemQuality = 50;
-
-    public enum ItemType
-    {
-        NormalItem,
-        ConjuredItem
-    }
 
     public virtual void UpdateItemQuality()
     {
-        var itemType = GetItemType();
-
         SellIn = SellIn - 1;
 
-        switch (itemType)
-        {
-            case ItemType.ConjuredItem:
-                var decrement = SellIn < 0 ? 4 : 2;
+        var decrement = SellIn < 0 ? 2 : 1;
 
-                Quality = Math.Max(Quality - decrement, MinimumItemQuality);
-                break;
-
-            case ItemType.NormalItem:
-            default:
-                decrement = SellIn < 0 ? 2 : 1;
-
-                Quality = Math.Max(Quality - decrement, MinimumItemQuality);
-                break;
-        }
-
-        return;
+        Quality = Math.Max(Quality - decrement, MinimumItemQuality);
     }
-
-    private ItemType GetItemType()
-    {
-        return Name switch
-        {
-            "Conjured Mana Cake" => ItemType.ConjuredItem,
-            _ => ItemType.NormalItem
-        };
-    }
-
 }

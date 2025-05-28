@@ -19,7 +19,7 @@ public class Program
             ItemFactory.BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 20, 15),
             ItemFactory.BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 49, 10),
             ItemFactory.BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 49, 5),
-            new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 }
+            ItemFactory.ConjuredItem("Conjured Mana Cake", 6, 3)
         ];
 
         var app = new GildedRose(Items);
