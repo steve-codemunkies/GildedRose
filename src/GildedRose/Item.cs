@@ -8,26 +8,18 @@ public class Item
 
     private const int MinimumItemQuality = 0;
     private const int MaximumItemQuality = 50;
-    private const int SulfurasItemQuality = 80;
 
     public enum ItemType
     {
         NormalItem,
         QualityIncrementItem,
         BackstagePasses,
-        LegendaryItem,
         ConjuredItem
     }
 
     public virtual void UpdateItemQuality()
     {
         var itemType = GetItemType();
-
-        if (itemType == ItemType.LegendaryItem)
-        {
-            Quality = SulfurasItemQuality;
-            return;
-        }
 
         SellIn = SellIn - 1;
 
@@ -70,7 +62,6 @@ public class Item
     {
         return Name switch
         {
-            "Sulfuras, Hand of Ragnaros" => ItemType.LegendaryItem,
             "Aged Brie" => ItemType.QualityIncrementItem,
             "Backstage passes to a TAFKAL80ETC concert" => ItemType.BackstagePasses,
             "Conjured Mana Cake" => ItemType.ConjuredItem,

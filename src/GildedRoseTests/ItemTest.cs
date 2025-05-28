@@ -6,20 +6,6 @@ public class ItemTest
 {
     private static readonly Random _random = new Random();
 
-    [Fact]
-    public void SulfurasIsALegendaryItemAndNeverChanges()
-    {
-        var expectedSellIn = _random.Next(1, 100);
-        var expectedQuality = _random.Next(1, 100);
-
-        var item = new Item { Name = "Sulfuras, Hand of Ragnaros", Quality = expectedQuality, SellIn = expectedSellIn };
-
-        item.UpdateItemQuality();
-
-        Assert.Equal(80, item.Quality);
-        Assert.Equal(expectedSellIn, item.SellIn);
-    }
-
     [Theory]
     [InlineData(10, 20, 9, 19)]
     [InlineData(10, 1, 9, 0)]
