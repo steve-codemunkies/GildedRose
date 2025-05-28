@@ -1,4 +1,6 @@
 ﻿
+using System.Xml.Linq;
+
 namespace GildedRoseKata;
 
 public class ItemFactory
@@ -13,8 +15,8 @@ public class ItemFactory
         return new QualityIncrementItem { Name = name, Quality = quality, SellIn = sellIn };
     }
 
-    public static BackstagePassItem BackstagePassItem(string expectedName, int expectedQuality, int expectedSellIn)
+    public static BackstagePassItem BackstagePassItem(string name, int quality, int sellIn)
     {
-        throw new NotImplementedException();
+        return new BackstagePassItem { Name = name, Quality = quality, SellIn = sellIn };
     }
 }
