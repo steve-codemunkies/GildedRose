@@ -17,7 +17,8 @@ public class GildedRose
         NormalItem,
         QualityIncrementItem,
         BackstagePasses,
-        LegendaryItem
+        LegendaryItem,
+        ConjuredItem
     }
 
     public void UpdateQuality()
@@ -52,9 +53,15 @@ public class GildedRose
                     };
                     break;
 
+                case ItemType.ConjuredItem:
+                    var decrement = item.SellIn < 0 ? 4 : 2;
+
+                    item.Quality = Math.Max(item.Quality - decrement, MinimumItemQuality);
+                    break;
+
                 case ItemType.NormalItem:
                 default:
-                    var decrement = item.SellIn < 0 ? 2 : 1;
+                    decrement = item.SellIn < 0 ? 2 : 1;
 
                     item.Quality = Math.Max(item.Quality - decrement, MinimumItemQuality);
                     break;
@@ -69,6 +76,7 @@ public class GildedRose
             "Sulfuras, Hand of Ragnaros" => ItemType.LegendaryItem,
             "Aged Brie" => ItemType.QualityIncrementItem,
             "Backstage passes to a TAFKAL80ETC concert" => ItemType.BackstagePasses,
+            "Conjured Mana Cake" => ItemType.ConjuredItem,
             _ => ItemType.NormalItem
         };
     }
