@@ -39,6 +39,11 @@ public class GildedRose
                 {
                     item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
                 }
+
+                if (item.SellIn < 0)
+                {
+                    item.Quality = MinimumItemQuality;
+                }
             }
             else
             {
@@ -56,13 +61,6 @@ public class GildedRose
                 if (item.SellIn < 0)
                 {
                     item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
-                }
-            }
-            else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
-            {
-                if (item.SellIn < 0)
-                {
-                    item.Quality = MinimumItemQuality;
                 }
             }
         }
