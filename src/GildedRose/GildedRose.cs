@@ -15,29 +15,31 @@ public class GildedRose
     {
         foreach (Item item in Items)
         {
-            if (item.Name == "Aged Brie" || item.Name == "Backstage passes to a TAFKAL80ETC concert")
+            switch (item.Name)
             {
-                item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
+                case "Aged Brie":
+                case "Backstage passes to a TAFKAL80ETC concert":
+                    item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
 
-                if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
-                {
-                    if (item.SellIn < 11)
+                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
                     {
-                        item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
-                    }
+                        if (item.SellIn < 11)
+                        {
+                            item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
+                        }
 
-                    if (item.SellIn < 6)
-                    {
-                        item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
+                        if (item.SellIn < 6)
+                        {
+                            item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
+                        }
                     }
-                }
-            }
-            else
-            {
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
-                }
+                    break;
+                default:
+                    if (item.Name != "Sulfuras, Hand of Ragnaros")
+                    {
+                        item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
+                    }
+                    break;
             }
 
             if (item.Name != "Sulfuras, Hand of Ragnaros")
