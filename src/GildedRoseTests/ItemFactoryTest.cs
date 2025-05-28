@@ -1,5 +1,4 @@
-﻿
-using GildedRoseKata;
+﻿using GildedRoseKata;
 
 namespace GildedRoseTests
 {
@@ -14,21 +13,10 @@ namespace GildedRoseTests
 
             var item = ItemFactory.LegendaryItem(expectedName, expectedQuality, expectedSellIn);
 
+            Assert.IsType<LegendaryItem>(item);
             Assert.Equal(expectedName, item.Name);
             Assert.Equal(expectedQuality, item.Quality);
             Assert.Equal(expectedSellIn, item.SellIn);
         }
-    }
-
-    internal class ItemFactory
-    {
-        internal static LegendaryItem LegendaryItem(string expectedName, int expectedQuality, int expectedSellIn)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    internal class LegendaryItem : Item
-    {
     }
 }
