@@ -26,12 +26,9 @@ public class GildedRose
 
             if (item.Name == "Aged Brie")
             {
-                item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
+                var increment = item.SellIn < 0 ? 2 : 1;
 
-                if (item.SellIn < 0)
-                {
-                    item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
-                }
+                item.Quality = Math.Min(item.Quality + increment, MaximumItemQuality);
             }
             else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
             {
