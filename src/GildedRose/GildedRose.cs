@@ -15,6 +15,11 @@ public class GildedRose
     {
         foreach (Item item in Items)
         {
+            if (item.Name == "Sulfuras, Hand of Ragnaros")
+            {
+                continue;
+            }
+            
             if (item.Name == "Aged Brie")
             {
                 item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
@@ -33,16 +38,16 @@ public class GildedRose
                     item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
                 }
             }
-            else if (item.Name != "Sulfuras, Hand of Ragnaros")
+            else //if (item.Name != "Sulfuras, Hand of Ragnaros")
             {
                 item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
             }
 
 
-            if (item.Name != "Sulfuras, Hand of Ragnaros")
-            {
-                item.SellIn = item.SellIn - 1;
-            }
+            //if (item.Name != "Sulfuras, Hand of Ragnaros")
+            //{
+            item.SellIn = item.SellIn - 1;
+            //}
 
             if (item.SellIn < 0)
             {
@@ -58,10 +63,10 @@ public class GildedRose
                     }
                     else
                     {
-                        if (item.Name != "Sulfuras, Hand of Ragnaros")
-                        {
-                            item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
-                        }
+                        //if (item.Name != "Sulfuras, Hand of Ragnaros")
+                        //{
+                        item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
+                        //}
                     }
                 }
             }
