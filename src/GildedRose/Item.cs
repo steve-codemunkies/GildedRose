@@ -19,7 +19,7 @@ public class Item
         ConjuredItem
     }
 
-    public void UpdateItemQuality()
+    public virtual void UpdateItemQuality()
     {
         var itemType = GetItemType();
 
