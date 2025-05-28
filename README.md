@@ -1,6 +1,6 @@
 # Gilded Rose Refactoring Kata
 
-<detail>
+<details>
 <summary>How to use this Kata</summary>
 
 The first thing to do is make a copy of this repository in your personal GitHub account and make public. Please do not fork this repository as your solution will be visible to others undertaking this exercise.
@@ -8,8 +8,8 @@ The first thing to do is make a copy of this repository in your personal GitHub 
 The purpose of this exercise is to demonstrate your skills at designing test cases and refactoring a legacy codebase, safely. 
 
 The idea is not to re-write the code from scratch, but rather to practice taking small steps, running the tests often, and incrementally improve the design towards a solution that embodies OO principles and patterns.
-</detail>
-<detail>
+</details>
+<details>
 <summary>Gilded Rose Requirements Specification</summary>
 
 Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a
@@ -47,15 +47,15 @@ for you).
 
 Just for clarification, an item can never have its `Quality` increase above `50`, however __"Sulfuras"__ is a
 legendary item and as such its `Quality` is `80` and it never alters.
-</detail>
-<detail>
+</details>
+<details>
 <summary>Introduction to Text-Based Approval Testing</summary>
 This is a testing approach which is very useful when refactoring legacy code. Before you change the code, you run it, and gather the output of the code as a plain text file. You review the text, and if it correctly describes the behaviour as you understand it, you can "approve" it, and save it as a "Golden Master". Then after you change the code, you run it again, and compare the new output against the Golden Master. Any differences, and the test fails.
 
 It's basically the same idea as "assertEquals(expected, actual)" in a unit test, except the text you are comparing is typically much longer, and the "expected" value is saved from actual output, rather than being defined in advance.
 
 Typically a piece of legacy code may not produce suitable textual output from the start, so you may need to modify it before you can write your first text-based approval test. This has already been setup and the initial "Golden Master" has been provided in `ApprovalTest.ThirtyDays.verified.txt`
-</detail>
+</details>
 
 ## Branches
 
