@@ -5,7 +5,7 @@ namespace GildedRoseTests
     public class ItemFactoryTest
     {
         [Fact]
-        public void TheItemFactoryLegendaryItemMethodBuildsALegendaryItem()
+        public void TheItemFactoryLegendaryItemFunctionBuildsALegendaryItem()
         {
             var expectedName = "Sulfuras, Hand of Ragnaros";
             var expectedSellIn = 0;
@@ -20,7 +20,7 @@ namespace GildedRoseTests
         }
 
         [Fact]
-        public void TheItemFactoryQualityIncrementItemMethodBuildsAQualityIncrementItem()
+        public void TheItemFactoryQualityIncrementItemFunctionBuildsAQualityIncrementItem()
         {
             var expectedName = "Aged Brie";
             var expectedSellIn = 25;
@@ -35,7 +35,7 @@ namespace GildedRoseTests
         }
 
         [Fact]
-        public void TheItemFactoryBackstagePassItemMethodBuildsABackstagePassItem()
+        public void TheItemFactoryBackstagePassItemFunctionBuildsABackstagePassItem()
         {
             var expectedName = "Backstage passes to a TAFKAL80ETC concert";
             var expectedSellIn = 25;
@@ -50,7 +50,7 @@ namespace GildedRoseTests
         }
 
         [Fact]
-        public void TheItemFactoryConjuredItemMethodBuildsAConjuredItem()
+        public void TheItemFactoryConjuredItemFunctionBuildsAConjuredItem()
         {
             var expectedName = "Conjured Mana Cake";
             var expectedSellIn = 25;
@@ -65,7 +65,7 @@ namespace GildedRoseTests
         }
 
         [Fact]
-        public void TheItemFactoryNormalItemMethodBuildsAnItem()
+        public void TheItemFactoryNormalItemFunctionBuildsAnItem()
         {
             var expectedName = "Normal Item";
             var expectedSellIn = 25;
