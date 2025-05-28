@@ -4,7 +4,6 @@ namespace GildedRoseKata
 {
     public class QualityIncrementItem : Item
     {
-        private const int MinimumItemQuality = 0;
         private const int MaximumItemQuality = 50;
 
         public override void UpdateItemQuality()
