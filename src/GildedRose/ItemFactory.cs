@@ -6,4 +6,9 @@ public class ItemFactory
     {
         return new LegendaryItem { Name = name, Quality = quality, SellIn = sellIn };
     }
+
+    public static QualityIncrementItem QualityIncrementItem(string name, int quality, int sellIn)
+    {
+        throw new NotImplementedException();
+    }
 }
