@@ -15,31 +15,29 @@ public class GildedRose
     {
         foreach (Item item in Items)
         {
-            switch (item.Name)
+            if (item.Name == "Aged Brie" || item.Name == "Backstage passes to a TAFKAL80ETC concert")
             {
-                case "Aged Brie":
-                case "Backstage passes to a TAFKAL80ETC concert":
-                    item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
+                item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
 
-                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                {
+                    if (item.SellIn < 11)
                     {
-                        if (item.SellIn < 11)
-                        {
-                            item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
-                        }
+                        item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
+                    }
 
-                        if (item.SellIn < 6)
-                        {
-                            item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
-                        }
-                    }
-                    break;
-                default:
-                    if (item.Name != "Sulfuras, Hand of Ragnaros")
+                    if (item.SellIn < 6)
                     {
-                        item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
+                        item.Quality = Math.Min(item.Quality + 1, MaximumItemQuality);
                     }
-                    break;
+                }
+            }
+            else
+            {
+                if (item.Name != "Sulfuras, Hand of Ragnaros")
+                {
+                    item.Quality = Math.Max(item.Quality - 1, MinimumItemQuality);
+                }
             }
 
             if (item.Name != "Sulfuras, Hand of Ragnaros")
