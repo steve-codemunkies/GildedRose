@@ -34,27 +34,30 @@ public class GildedRose
             
             item.SellIn = item.SellIn - 1;
 
-            if (itemType == ItemType.QualityIncrementItem)
+            switch (itemType)
             {
-                var increment = item.SellIn < 0 ? 2 : 1;
+                case ItemType.QualityIncrementItem:
+                    var increment = item.SellIn < 0 ? 2 : 1;
 
-                item.Quality = Math.Min(item.Quality + increment, MaximumItemQuality);
-            }
-            else if (itemType == ItemType.BackstagePasses)
-            {
-                item.Quality = item.SellIn switch
-                {
-                    < 0 => MinimumItemQuality,
-                    < 6 => Math.Min(item.Quality + 3, MaximumItemQuality),
-                    < 11 => Math.Min(item.Quality + 2, MaximumItemQuality),
-                    _ => Math.Min(item.Quality + 1, MaximumItemQuality),
-                };
-            }
-            else
-            {
-                var decrement = item.SellIn < 0 ? 2 : 1;
+                    item.Quality = Math.Min(item.Quality + increment, MaximumItemQuality);
+                    break;
 
-                item.Quality = Math.Max(item.Quality - decrement, MinimumItemQuality);
+                case ItemType.BackstagePasses:
+                    item.Quality = item.SellIn switch
+                    {
+                        < 0 => MinimumItemQuality,
+                        < 6 => Math.Min(item.Quality + 3, MaximumItemQuality),
+                        < 11 => Math.Min(item.Quality + 2, MaximumItemQuality),
+                        _ => Math.Min(item.Quality + 1, MaximumItemQuality),
+                    };
+                    break;
+
+                case ItemType.NormalItem:
+                default:
+                    var decrement = item.SellIn < 0 ? 2 : 1;
+
+                    item.Quality = Math.Max(item.Quality - decrement, MinimumItemQuality);
+                    break;
             }
         }
     }
