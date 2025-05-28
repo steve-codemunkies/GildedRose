@@ -12,11 +12,21 @@ public class GildedRose
     private const int MaximumItemQuality = 50;
     private const int SulfurasItemQuality = 80;
 
+    public enum ItemType
+    {
+        NormalItem,
+        QualityIncrementItem,
+        BackstagePasses,
+        LegendaryItem
+    }
+
     public void UpdateQuality()
     {
         foreach (Item item in Items)
         {
-            if (item.Name == "Sulfuras, Hand of Ragnaros")
+            var itemType = GetItemType(item);
+
+            if (itemType == ItemType.LegendaryItem)
             {
                 item.Quality = SulfurasItemQuality;
                 continue;
@@ -24,13 +34,13 @@ public class GildedRose
             
             item.SellIn = item.SellIn - 1;
 
-            if (item.Name == "Aged Brie")
+            if (itemType == ItemType.QualityIncrementItem)
             {
                 var increment = item.SellIn < 0 ? 2 : 1;
 
                 item.Quality = Math.Min(item.Quality + increment, MaximumItemQuality);
             }
-            else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+            else if (itemType == ItemType.BackstagePasses)
             {
                 item.Quality = item.SellIn switch
                 {
@@ -47,5 +57,16 @@ public class GildedRose
                 item.Quality = Math.Max(item.Quality - decrement, MinimumItemQuality);
             }
         }
+    }
+
+    private ItemType GetItemType(Item item)
+    {
+        return item.Name switch
+        {
+            "Sulfuras, Hand of Ragnaros" => ItemType.LegendaryItem,
+            "Aged Brie" => ItemType.QualityIncrementItem,
+            "Backstage passes to a TAFKAL80ETC concert" => ItemType.BackstagePasses,
+            _ => ItemType.NormalItem
+        };
     }
 }
