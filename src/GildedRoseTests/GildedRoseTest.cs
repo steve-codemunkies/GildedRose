@@ -17,7 +17,7 @@ public class GildedRoseTest
         var app = new GildedRose([item]);
         app.UpdateQuality();
 
-        Assert.Equal(expectedQuality, item.Quality);
+        Assert.Equal(80, item.Quality);
         Assert.Equal(expectedSellIn, item.SellIn);
     }
 

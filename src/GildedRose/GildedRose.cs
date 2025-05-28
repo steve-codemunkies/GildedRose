@@ -10,6 +10,7 @@ public class GildedRose
 
     private const int MinimumItemQuality = 0;
     private const int MaximumItemQuality = 50;
+    private const int SulfurasItemQuality = 80;
 
     public void UpdateQuality()
     {
@@ -17,6 +18,7 @@ public class GildedRose
         {
             if (item.Name == "Sulfuras, Hand of Ragnaros")
             {
+                item.Quality = SulfurasItemQuality;
                 continue;
             }
             
